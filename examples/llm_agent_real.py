@@ -129,7 +129,13 @@ Respond only with valid JSON.
         endpoint = api_plan.get("endpoint", "/")
         body = api_plan.get("body")
         
-        url = f"{self.base_url}{endpoint}"
+        # Handle both relative and absolute URLs
+        if endpoint.startswith(('http://', 'https://')):
+            # LLM returned full URL, use it as-is
+            url = endpoint
+        else:
+            # LLM returned relative path, prepend base URL
+            url = f"{self.base_url}{endpoint}"
         
         try:
             if method == "GET":
