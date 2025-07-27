@@ -10,6 +10,13 @@ import asyncio
 from typing import Dict, Any, Optional
 import httpx
 
+# Try to load .env file if it exists
+try:
+    from dotenv import load_dotenv
+    load_dotenv()  # This loads .env file from current directory or parent directories
+except ImportError:
+    pass  # dotenv not installed, will use system environment variables only
+
 # Optional: Use OpenAI for real LLM interaction
 try:
     import openai
