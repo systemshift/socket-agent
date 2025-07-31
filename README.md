@@ -54,6 +54,21 @@ Run your app and fetch the descriptor:
 curl http://localhost:8000/.well-known/socket-agent
 ```
 
+### Using the Client
+
+Agents can discover and use your API with the client library:
+
+```python
+from socket_agent_client import SocketAgentClient
+
+async with SocketAgentClient() as client:
+    # Discover API
+    await client.discover("http://localhost:8000")
+    
+    # Make calls
+    result = await client.call("POST", "/todo", json={"text": "buy milk"})
+```
+
 ## What is socket-agent?
 
 socket-agent provides a lightweight alternative to OpenAPI/Swagger for exposing APIs to LLM agents. Instead of maintaining complex specifications, you:
@@ -102,7 +117,50 @@ Modern APIs are over-structured. While humans need detailed documentation, LLM a
 
 ## Examples
 
-See the [examples/todo_fastapi](examples/todo_fastapi) directory for a complete working example.
+- **[Multi-Service Benchmark](examples/benchmark)** - Complex real-world scenarios with grocery, recipe, and banking APIs demonstrating multi-service coordination
+
+## Client Library
+
+For agents and developers who want to interact with socket-agent APIs, we provide a client library:
+
+```bash
+pip install socket-agent-client
+```
+
+Features:
+- Automatic API discovery
+- Type-safe API calls  
+- Pattern learning and stub generation for token optimization
+
+See [socket-agent-client](socket-agent-client/) for more details.
+
+## Architecture
+
+socket-agent follows a clear separation of concerns:
+
+- **Server (this package)**: Minimal, just serves descriptors
+- **Client ([socket-agent-client](socket-agent-client/))**: Smart, handles discovery, learning, and optimization
+- **Philosophy**: Servers stay dumb, clients do the work
+
+## Project Structure
+
+```
+socket-agent/                 # Server library (this package)
+├── socket_agent/            # Core server code
+│   ├── decorators.py       # @socket.describe decorator
+│   ├── middleware.py       # FastAPI middleware
+│   └── schemas.py          # Descriptor format
+├── examples/
+│   └── benchmark/          # Multi-service demo
+└── tests/
+
+socket-agent-client/         # Client library (separate package)
+├── socket_agent_client/    # Client code
+│   ├── client.py          # API client
+│   ├── discovery.py       # Descriptor fetching
+│   └── learner.py         # Pattern learning
+└── examples/
+```
 
 ## Development
 
