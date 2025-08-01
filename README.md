@@ -2,6 +2,17 @@
 
 Minimal API discovery for LLM agents. An alternative to complex API specifications that enables agents to understand and interact with your API through a simple, lightweight descriptor.
 
+## Development
+
+Dependencies for this repo are managed by [Determinate Nix](https://determinate.systems/).
+To start working with them, install Determinate Nix and then run:
+
+```sh
+nix develop
+```
+
+Inside that environment, you should have python and (in the future) TypeScript and any other languages or dependencies required to work on socket-agent.
+
 ## Quick Start (60 seconds)
 
 ### Installation
