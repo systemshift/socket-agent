@@ -5,7 +5,7 @@ A Python client library for interacting with socket-agent APIs. This library pro
 ## Installation
 
 ```bash
-pip install socket-agent-client
+pip install socket_agent_client
 ```
 
 ## Features

@@ -137,7 +137,7 @@ Modern APIs are over-structured. While humans need detailed documentation, LLM a
 For agents and developers who want to interact with socket-agent APIs, we provide a client library:
 
 ```bash
-pip install socket-agent-client
+pip install socket_agent_client
 ```
 
 Features:
@@ -145,14 +145,14 @@ Features:
 - Type-safe API calls  
 - Pattern learning and stub generation for token optimization
 
-See [socket-agent-client](socket-agent-client/) for more details.
+See [socket_agent_client](socket_agent_client/) for more details.
 
 ## Architecture
 
 socket-agent follows a clear separation of concerns:
 
 - **Server (this package)**: Minimal, just serves descriptors
-- **Client ([socket-agent-client](socket-agent-client/))**: Smart, handles discovery, learning, and optimization
+- **Client ([socket_agent_client](socket_agent_client/))**: Smart, handles discovery, learning, and optimization
 - **Philosophy**: Servers stay dumb, clients do the work
 
 ## Project Structure
@@ -169,7 +169,7 @@ socket-agent/                  # Server library (this package)
 │   └── benchmark/            # Multi-service demo
 └── tests/
 
-socket-agent-client/           # Client library (separate package)
+socket_agent_client/           # Client library (separate package)
 ├── socket_agent_client/      # Client code
 │   ├── client.py             # API client
 │   ├── discovery.py          # Descriptor fetching

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Basic usage example of socket-agent-client."""
+"""Basic usage example of socket_agent_client."""
 
 import asyncio
 from socket_agent_client import SocketAgentClient
