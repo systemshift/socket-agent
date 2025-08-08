@@ -9,7 +9,8 @@ description = "Minimal API discovery for LLM agents"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
-    {name = "Socket Agent Contributors"},
+    {name = "Tobi Lehman <tobi@socketagent.io"},
+    {name = "Asim Homaid <asim@socketagent.io"},
 ]
 requires-python = ">=3.11"
 dependencies = [
