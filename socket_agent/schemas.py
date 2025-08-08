@@ -33,7 +33,7 @@ class SocketDescriptor(BaseModel):
     description: str = Field(..., description="API description")
     base_url: str = Field(..., description="Base URL of the API")
     endpoints: List[EndpointInfo] = Field(..., description="List of available endpoints")
-    schema: Dict[str, Dict[str, Any]] = Field(
+    schemas: Dict[str, Dict[str, Any]] = Field(
         default_factory=dict,
         description="Request/response schemas for each endpoint",
     )

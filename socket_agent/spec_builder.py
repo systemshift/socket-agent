@@ -79,7 +79,7 @@ def build_descriptor(
         description=description,
         base_url=base_url,
         endpoints=endpoints,
-        schema=schemas,
+        schemas=schemas,
         examples=all_examples,
     )
 

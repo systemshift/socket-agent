@@ -56,8 +56,8 @@ def test_descriptor_schema():
     assert "method" in endpoint
     assert "summary" in endpoint
 
-    assert "schema" in descriptor
-    assert isinstance(descriptor["schema"], dict)
+    assert "schemas" in descriptor
+    assert isinstance(descriptor["schemas"], dict)
 
     assert "auth" in descriptor
     assert descriptor["auth"]["type"] == "none"
@@ -135,11 +135,11 @@ def test_schema_inclusion():
     response = client.get("/.well-known/socket-agent")
     descriptor = response.json()
 
-    assert "/items" in descriptor["schema"]
-    assert "request" in descriptor["schema"]["/items"]
-    assert "response" in descriptor["schema"]["/items"]
+    assert "/items" in descriptor["schemas"]
+    assert "request" in descriptor["schemas"]["/items"]
+    assert "response" in descriptor["schemas"]["/items"]
 
-    request_schema = descriptor["schema"]["/items"]["request"]
+    request_schema = descriptor["schemas"]["/items"]["request"]
     assert request_schema["type"] == "object"
     assert "name" in request_schema["properties"]
     assert "price" in request_schema["properties"]

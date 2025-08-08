@@ -142,7 +142,7 @@ class SocketAgentClient:
         for endpoint in self.descriptor.endpoints:
             if endpoint.method == method and endpoint.path == path:
                 # Get schema if available
-                schema = self.descriptor.schema.get(path, {})
+                schema = self.descriptor.schemas.get(path, {})
                 return {
                     "method": endpoint.method,
                     "path": endpoint.path,

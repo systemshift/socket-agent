@@ -18,7 +18,7 @@ class Descriptor(BaseModel):
     description: str
     base_url: str
     endpoints: List[EndpointInfo]
-    schema: Dict[str, Dict[str, Any]] = Field(default_factory=dict)
+    schemas: Dict[str, Dict[str, Any]] = Field(default_factory=dict)
     auth: Dict[str, Any] = Field(default_factory=lambda: {"type": "none"})
     examples: List[str] = Field(default_factory=list)
 
