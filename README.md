@@ -178,6 +178,12 @@ socket-agent-client/           # Client library (separate package)
 └── examples/
 ```
 
+## How is this different from [MCP](https://modelcontextprotocol.io/)?
+
+In MCP: Servers implement the MCP spec and tool/resource semantics; clients and servers negotiate capabilities at runtime.
+
+In socket-agent: "Server stays dumb, client does the work." The server only serves a tiny descriptor; the client handles discovery, calling, and optional pattern learning/stub generation.
+
 ## Development
 
 ```bash
