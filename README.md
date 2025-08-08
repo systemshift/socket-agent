@@ -184,6 +184,8 @@ In MCP: Servers implement the MCP spec and tool/resource semantics; clients and 
 
 In socket-agent: "Server stays dumb, client does the work." The server only serves a tiny descriptor; the client handles discovery, calling, and optional pattern learning/stub generation.
 
+Socket-Agent is designed to be used in environments where the agent is exploring a new environment without known rules, such as a server API that hasn't been seen before. MCP is good for local machine tool use or other situations with pre-agreed upon programmable rules.
+
 ## Development
 
 ```bash
