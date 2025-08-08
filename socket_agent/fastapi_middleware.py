@@ -71,6 +71,7 @@ class SocketAgentMiddleware:
                 headers={
                     "Content-Type": "application/json",
                     "Cache-Control": "public, max-age=3600",
+                    "Vary": "Host",
                 },
             )
         except Exception as e:

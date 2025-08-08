@@ -14,7 +14,7 @@ pip install socket-agent-client
 - **Type-Safe Client**: Full type hints and Pydantic models
 - **Pattern Learning**: Learn from API usage to generate optimized stubs
 - **Async Support**: Built on httpx for modern async Python
-- **Zero Dependencies**: Only requires httpx and pydantic
+- **Minimal Dependencies**: Built on httpx and pydantic
 
 ## Quick Start
 

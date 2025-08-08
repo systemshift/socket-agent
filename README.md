@@ -116,9 +116,11 @@ The descriptor served at `/.well-known/socket-agent` contains:
       "request": { "type": "object", "properties": {...} },
       "response": { "type": "object", "properties": {...} }
     }
-  },
+  ],
   "auth": { "type": "none" },
-  "examples": ["curl -X POST /todo -d '{\"text\":\"buy milk\"}'"]
+  "examples": ["curl -X POST /todo -d '{\"text\":\"buy milk\"}'"],
+  "ui": { "/todo": { "form": { "layout": "vertical" } } },
+  "specVersion": "2025-01-01"
 }
 ```
 
@@ -156,20 +158,23 @@ socket-agent follows a clear separation of concerns:
 ## Project Structure
 
 ```
-socket-agent/                 # Server library (this package)
-├── socket_agent/            # Core server code
-│   ├── decorators.py       # @socket.describe decorator
-│   ├── middleware.py       # FastAPI middleware
-│   └── schemas.py          # Descriptor format
+socket-agent/                  # Server library (this package)
+├── socket_agent/             # Core server code
+│   ├── decorators.py         # @socket.describe decorator
+│   ├── fastapi_middleware.py # FastAPI middleware
+│   ├── spec_builder.py       # Descriptor builder
+│   └── schemas.py            # Descriptor models
 ├── examples/
-│   └── benchmark/          # Multi-service demo
+│   ├── todo_fastapi/         # Minimal Todo API used in tests
+│   └── benchmark/            # Multi-service demo
 └── tests/
 
-socket-agent-client/         # Client library (separate package)
-├── socket_agent_client/    # Client code
-│   ├── client.py          # API client
-│   ├── discovery.py       # Descriptor fetching
-│   └── learner.py         # Pattern learning
+socket-agent-client/           # Client library (separate package)
+├── socket_agent_client/      # Client code
+│   ├── client.py             # API client
+│   ├── discovery.py          # Descriptor fetching
+│   ├── models.py             # Pydantic models
+│   └── learner.py            # Pattern learning
 └── examples/
 ```
 
