@@ -13,12 +13,19 @@ nix develop
 
 Inside that environment, you should have python and (in the future) TypeScript and any other languages or dependencies required to work on socket-agent.
 
+```bash
+pip install -e ".[dev]"
+pip install -e "./socket_agent_client[dev]"
+
+```
+
 ## Quick Start (60 seconds)
 
 ### Installation
 
 ```bash
-pip install socket-agent
+pip install socket_agent
+pip install socket_agent_client
 ```
 
 ### Basic Usage
