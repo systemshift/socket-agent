@@ -28,6 +28,12 @@
           black
           isort
           python-dotenv
+          
+          # Add pip for editable installs
+          pip
+          
+          # Interactive Python shell
+          ipython
         ]);
       in
       {
@@ -41,6 +47,12 @@
           shellHook = ''
             echo "Socket Agent development environment activated"
             echo "Python version: $(python --version)"
+            
+            # Set up Python path for local development
+            export PYTHONPATH="${toString ./.}/socket_agent:${toString ./.}/socket_agent_client:$PYTHONPATH"
+            echo "Added local packages to PYTHONPATH"
+            
+            echo ""
             echo "Available packages:"
             echo "  - fastapi"
             echo "  - pydantic" 
@@ -50,6 +62,9 @@
             echo "  - black"
             echo "  - isort"
             echo "  - python-dotenv"
+            echo "  - ipython"
+            echo "  - socket_agent (via PYTHONPATH)"
+            echo "  - socket_agent_client (via PYTHONPATH)"
             echo ""
             echo "To run the examples:"
             echo "  cd examples/benchmark"
