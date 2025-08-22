@@ -37,7 +37,7 @@ class DescriptorFetcher:
                 timeout=self.timeout,
                 verify=self.verify_ssl,
                 follow_redirects=True,
-                limits=httpx.Limits(max_redirects=3)
+                limits=httpx.Limits()
             )
         return self._client
     

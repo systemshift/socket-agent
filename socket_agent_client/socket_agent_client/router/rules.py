@@ -107,6 +107,9 @@ class RulesEngine:
         matches = []
         
         for stub in self.stub_store.list_all():
+            if not stub.patterns:
+                continue
+                
             for pattern_str in stub.patterns:
                 try:
                     pattern = re.compile(pattern_str, re.IGNORECASE)
@@ -127,15 +130,15 @@ class RulesEngine:
         """Match text against stub keywords."""
         matches = []
         
-        # Extract words from text
-        text_words = set(re.findall(r'\w+', text))
+        # Extract words from text (lowercase)
+        text_words = set(re.findall(r'\w+', text.lower()))
         
         for stub in self.stub_store.list_all():
             if not stub.keywords:
                 continue
             
-            # Count matching keywords
-            stub_keywords = set(stub.keywords)
+            # Count matching keywords (case-insensitive)
+            stub_keywords = set(k.lower() for k in stub.keywords)
             common_keywords = text_words & stub_keywords
             
             if common_keywords:
@@ -180,9 +183,9 @@ class RulesEngine:
             if stub.method not in expected_methods:
                 continue
             
-            # Check if resource name appears in text
+            # Check if resource name appears in text (case-insensitive)
             resource = self._extract_resource_from_path(stub.path)
-            if resource and resource in text:
+            if resource and resource.lower() in text.lower():
                 confidence = 0.85
                 reasoning = f"Action '{detected_action}' + resource '{resource}'"
                 matches.append((stub, confidence, reasoning))

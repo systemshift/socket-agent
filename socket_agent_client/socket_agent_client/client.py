@@ -50,7 +50,7 @@ class Client:
         
         # Core components
         self.stubs = StubStore()
-        self.router = RulesEngine(self.stubs)
+        self.router = RulesEngine(stub_store=self.stubs)  # Explicitly pass stub_store
         self.executor = Executor(http_session=http_session)
         self.renderer = Renderer()
         
