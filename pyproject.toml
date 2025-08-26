@@ -26,6 +26,9 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 
+[tool.setuptools]
+packages = ["socket_agent"]
+
 [project.optional-dependencies]
 dev = [
     "pytest>=7.0.0",
